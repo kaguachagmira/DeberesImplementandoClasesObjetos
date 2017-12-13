@@ -1,3 +1,12 @@
+/********************************************************************
+ *          Universidad de las Fuerzas Armadas Espe                 *
+ * Enunciado: Utilizando listas doblemente                          *
+ *            enlazadas realizar un menu usando Clases POO          *
+ * Alumno:Kevin Guachagmira, Cristian Barragan, Jonathan Altamirano *
+ * Fecha de inicio: 10/12/2017	Fecha de modificacion: 12/12/2017   *
+ * Docente: Ing. Fernando Solis                                     *
+ * author: Guachagmira Kevin                                        *
+ ********************************************************************/
 #include <iostream>
 #include "listadoble.h"
 #include <stdio.h>
