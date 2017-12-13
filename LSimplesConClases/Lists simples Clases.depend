@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1513165128 source:c:\users\usuario\desktop\calculo\lists simples clases\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<windows.h>
+	<conio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"listasSimples.h"
+
+1513166884 c:\users\usuario\desktop\calculo\lists simples clases\listassimples.h
+	<iostream>
+
