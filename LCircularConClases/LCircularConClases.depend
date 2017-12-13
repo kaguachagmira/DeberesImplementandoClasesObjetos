@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1513137033 source:c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\ldobleconclases\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"listacircular.h"
+	<windows.h>
+
+1513136390 c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\ldobleconclases\listacircular.h
+	<iostream>
+
+1513135543 source:c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\ldobleconclases\main.cpp
+	<iostream>
+	"listacircular.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<windows.h>
+
+1513135543 source:c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\lcircularconclases\main.cpp
+	<iostream>
+	"listacircular.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<windows.h>
+
+1513136390 c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\lcircularconclases\listacircular.h
+	<iostream>
+
+1513139475 source:c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\lcircularconclases\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"listacircular.h"
+	<windows.h>
+
