@@ -1,0 +1,121 @@
+# depslib dependency file v1.0
+1513165128 source:c:\users\usuario\desktop\calculo\lists simples clases\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<windows.h>
+	<conio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"listasSimples.h"
+
+1513166884 c:\users\usuario\desktop\calculo\lists simples clases\listassimples.h
+	<iostream>
+
+1513533671 source:c:\users\usuario\desktop\calculo\lsimplesconclases\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<windows.h>
+	<conio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"listasSimples.h"
+
+1513534273 c:\users\usuario\desktop\calculo\lsimplesconclases\listassimples.h
+	<iostream>
+
+1513534013 source:c:\users\usuario\desktop\calculo\lsimplesconclases\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"listasSimples.h"
+	<windows.h>
+
+1513534273 source:c:\users\usuario\desktop\estrctura clase\deberpolaca\polaca_pila\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"listasSimples.h"
+	<windows.h>
+
+1513534273 c:\users\usuario\desktop\estrctura clase\deberpolaca\polaca_pila\listassimples.h
+	<iostream>
+
+1513533671 source:c:\users\usuario\desktop\estrctura clase\deberpolaca\polaca_pila\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<windows.h>
+	<conio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"listasSimples.h"
+
+1513534273 source:c:\users\usuario\desktop\estrctura clase\deberpolaca_exel\polaca_pila\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"listasSimples.h"
+	<windows.h>
+
+1513534273 c:\users\usuario\desktop\estrctura clase\deberpolaca_exel\polaca_pila\listassimples.h
+	<iostream>
+
+1513533671 source:c:\users\usuario\desktop\estrctura clase\deberpolaca_exel\polaca_pila\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<windows.h>
+	<conio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"listasSimples.h"
+
+1513740982 source:c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\deberesimplementandoclasesobjetos\polacainversa_problemaexcell\polaca_pila\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"listasSimples.h"
+	<windows.h>
+
+1513722958 c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\deberesimplementandoclasesobjetos\polacainversa_problemaexcell\polaca_pila\listassimples.h
+	<iostream>
+
+1513746577 source:c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\deberesimplementandoclasesobjetos\polacainversa_problemaexcell\polaca_pila\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<windows.h>
+	<conio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"listasSimples.h"
+
+1513740982 source:c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\polaca_pila\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"listasSimples.h"
+	<windows.h>
+
+1513722958 c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\polaca_pila\listassimples.h
+	<iostream>
+
+1513747375 source:c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\polaca_pila\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<windows.h>
+	<conio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"listasSimples.h"
+
