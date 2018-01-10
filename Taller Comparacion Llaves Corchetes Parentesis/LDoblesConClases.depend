@@ -1,0 +1,101 @@
+# depslib dependency file v1.0
+1512965282 source:c:\users\kevin111\desktop\listasdoblesconclases\ldoblesconclases\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"listadoble.h"
+
+1512966015 c:\users\kevin111\desktop\listasdoblesconclases\ldoblesconclases\listadoble.h
+	<iostream>
+
+1512965769 source:c:\users\kevin111\desktop\listasdoblesconclases\ldoblesconclases\main.cpp
+	<iostream>
+	"listadoble.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<windows.h>
+
+1512966246 source:f:\listasdoblesconclases\ldoblesconclases\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"listadoble.h"
+
+1512966016 f:\listasdoblesconclases\ldoblesconclases\listadoble.h
+	<iostream>
+
+1512967420 source:f:\listasdoblesconclases\ldoblesconclases\main.cpp
+	<iostream>
+	"listadoble.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<windows.h>
+
+1513047768 source:c:\users\toshiba\desktop\archivos c\listasdoblesconclases\ldoblesconclases\main.cpp
+	<iostream>
+	"listadoble.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<windows.h>
+
+1513047702 c:\users\toshiba\desktop\archivos c\listasdoblesconclases\ldoblesconclases\listadoble.h
+	<iostream>
+
+1513047904 source:c:\users\toshiba\desktop\archivos c\listasdoblesconclases\ldoblesconclases\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"listadoble.h"
+	<windows.h>
+
+1513481219 source:c:\users\usuario\desktop\ldoblesconclases\main.cpp
+	<iostream>
+	"listadoble.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<windows.h>
+
+1513482480 c:\users\usuario\desktop\ldoblesconclases\listadoble.h
+	<iostream>
+
+1513486499 source:c:\users\usuario\desktop\ldoblesconclases\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"listadoble.h"
+	<windows.h>
+
+1513481219 source:c:\users\usuario\desktop\estrctura clase\deberpolaca\polaca1\main.cpp
+	<iostream>
+	"listadoble.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<windows.h>
+
+1513482480 c:\users\usuario\desktop\estrctura clase\deberpolaca\polaca1\listadoble.h
+	<iostream>
+
+1513620912 source:e:\deberpolaca_exel\polaca1_1num\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"listadoble.h"
+	<windows.h>
+
+1513619786 e:\deberpolaca_exel\polaca1_1num\listadoble.h
+	<iostream>
+
+1513621094 source:e:\deberpolaca_exel\polaca1_1num\main.cpp
+	<iostream>
+	"listadoble.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<windows.h>
+
