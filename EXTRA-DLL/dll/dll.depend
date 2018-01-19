@@ -1,0 +1,59 @@
+# depslib dependency file v1.0
+1515260868 source:c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\dll\main.cpp
+	<iostream>
+	"listacircular.h"
+	"listasSimples.h"
+	"listadoble.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<windows.h>
+
+1515124525 c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\dll\listacircular.h
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+
+1515124654 c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\dll\listassimples.h
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+
+1515124654 c:\users\jhony\google drive\ing. sistemas\3º semestre sistemas\estructura de datos\2º parcial\dll\listadoble.h
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+
+1515260868 source:c:\users\kevin111\desktop\para el dll\extra-dll\dll\main.cpp
+	<iostream>
+	"listacircular.h"
+	"listasSimples.h"
+	"listadoble.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<windows.h>
+
+1515124525 c:\users\kevin111\desktop\para el dll\extra-dll\dll\listacircular.h
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+
+1515124654 c:\users\kevin111\desktop\para el dll\extra-dll\dll\listassimples.h
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+
+1515124654 c:\users\kevin111\desktop\para el dll\extra-dll\dll\listadoble.h
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+

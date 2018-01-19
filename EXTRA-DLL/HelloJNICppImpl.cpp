@@ -1,0 +1,1745 @@
+/*
+UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE
+Temática: Cine
+Autores: Cristian Barragan, Jonathan Altamirano ,Kevin Guachagmira
+NRC: 1363
+Fecha de creacion:01/11/2017
+Fecha de modificacion:22/11/2017
+Profesor: Ing. Edgar Fernando Solis Acosta
+Carrera: Ing. Sistemas e informatica
+*/
+#include "HelloJNICppImpl.h"
+#include <iostream>
+#include "listacircular.h"
+#include "listasSimples.h"
+#include "listadoble.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <conio.h>
+#include <windows.h>
+#define ASCENDENTE 1
+#define DESCENDENTE 0
+
+using namespace std;
+
+void gotoxy(int x,int y)
+{
+      HANDLE hcon;
+      hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+      COORD dwPos;
+      dwPos.X = x;
+      dwPos.Y= y;
+      SetConsoleCursorPosition(hcon,dwPos);
+ }
+inline int SetColor(const int foreground, const int background)
+{
+
+int Color = foreground + (background * 16);
+HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+SetConsoleTextAttribute(hConsole, Color);
+
+return 0;
+}
+int menuBuscar()
+{
+	int cont=1;
+	const char *opciones[]={"BUSCAR POR POSICION","BUSCAR POR DATO    "}; //OPCIONES
+	int n=2; //NUMERO OPCIONES
+	int selec=1;
+	int tecla;
+	bool repite=true;
+
+	for (int i=1;i<=67;i++)
+        {
+			gotoxy(i,8);
+			printf ("-");
+			gotoxy(i,0);
+			printf ("-");
+		}
+		for (int i=0;i<=7;i++)
+		{
+			gotoxy(1,i);
+			printf ("|");
+			gotoxy(67,i);
+			printf ("|");
+		}
+		//imprime titulo
+		gotoxy(25,0); printf("MENU DE BUSCAR\n\n");
+	do{
+		//system("cls");
+		gotoxy(25,2); printf("    ");
+		gotoxy(25,3); printf("    ");
+		gotoxy(25,4); printf("    ");
+		gotoxy(25,5); printf("    ");
+		gotoxy(25,6); printf("    ");
+		gotoxy(25,7); printf("    ");
+		gotoxy(25,8); printf("    ");
+		//imprime flecha de seleccion
+		//gotoxy(5,5+selec); SetColor(3, 7);printf("==>");
+		//imprime opciones
+		for(int i=0;i<n;i++){
+			gotoxy(30,2+i);
+			printf("                                         ");
+		}
+		for(int i=0;i<n;i++){
+			gotoxy(29,3+i);
+			printf("%s ",*(opciones+i));
+		}
+		printf ("\n");
+		gotoxy(25,2+selec);SetColor(240,7);printf("    %s",*(opciones+selec-1));
+		SetColor(7,0);
+		do{
+			tecla=getch();
+		}while(tecla!=72 && tecla!=80 && tecla!=13);
+		switch(tecla){
+			case 72:
+				selec--;
+				if(selec<1){
+					selec=n;
+				}
+				break;
+			case 80:
+				selec++;
+				if(selec>n){
+					selec=1;
+				}
+				break;
+			case 13:
+				repite=false;
+				break;
+		}
+	}while(repite==true);
+
+	return selec;
+}
+int menuEliminar()
+{
+	int cont=1;
+	const char *opciones[]={"ELIMINAR AL INICIO          ","ELIMINAR CUALQUIERA         ","ELIMINAR AL FINAL           "}; //OPCIONES
+	int n=3; //NUMERO OPCIONES
+	int selec=1;
+	int tecla;
+	bool repite=true;
+
+	for (int i=1;i<=67;i++)
+        {
+			gotoxy(i,8);
+			printf ("-");
+			gotoxy(i,0);
+			printf ("-");
+		}
+		for (int i=0;i<=7;i++)
+		{
+			gotoxy(1,i);
+			printf ("|");
+			gotoxy(67,i);
+			printf ("|");
+		}
+		//imprime titulo
+		gotoxy(25,0); printf("MENU DE ELIMINAR\n\n");
+	do{
+		//system("cls");
+		gotoxy(25,2); printf("    ");
+		gotoxy(25,3); printf("    ");
+		gotoxy(25,4); printf("    ");
+		gotoxy(25,5); printf("    ");
+		gotoxy(25,6); printf("    ");
+		gotoxy(25,7); printf("    ");
+		gotoxy(25,8); printf("    ");
+		//imprime flecha de seleccion
+		//gotoxy(5,5+selec); SetColor(3, 7);printf("==>");
+		//imprime opciones
+		for(int i=0;i<n;i++){
+			gotoxy(30,2+i);
+			printf("                                         ");
+		}
+		for(int i=0;i<n;i++){
+			gotoxy(29,3+i);
+			printf("%s ",*(opciones+i));
+		}
+		printf ("\n");
+		gotoxy(25,2+selec);SetColor(240,7);printf("    %s",*(opciones+selec-1));
+		SetColor(7,0);
+		do{
+			tecla=getch();
+		}while(tecla!=72 && tecla!=80 && tecla!=13);
+		switch(tecla){
+			case 72:
+				selec--;
+				if(selec<1){
+					selec=n;
+				}
+				break;
+			case 80:
+				selec++;
+				if(selec>n){
+					selec=1;
+				}
+				break;
+			case 13:
+				repite=false;
+				break;
+		}
+	}while(repite==true);
+
+	return selec;
+}
+int menuIngreso()
+{
+	int cont=1;
+	const char *opciones[]={"INGRESAR AL INICIO","INGRESAR EN MEDIO ","INGRESAR AL FINAL "}; //OPCIONES
+	int n=3; //NUMERO OPCIONES
+	int selec=1;
+	int tecla;
+	bool repite=true;
+
+	for (int i=1;i<=67;i++){
+			gotoxy(i,8);
+			printf ("-");
+			gotoxy(i,0);
+			printf ("-");
+		}
+		for (int i=0;i<=7;i++)
+		{
+			gotoxy(1,i);
+			printf ("|");
+			gotoxy(67,i);
+			printf ("|");
+		}
+		//imprime titulo
+		gotoxy(25,0); printf("MENU DE INGRESO\n\n");
+	do{
+		//system("cls");
+		gotoxy(25,2); printf("    ");
+		gotoxy(25,3); printf("    ");
+		gotoxy(25,4); printf("    ");
+		gotoxy(25,5); printf("    ");
+		gotoxy(25,6); printf("    ");
+		gotoxy(25,7); printf("    ");
+		gotoxy(25,8); printf("    ");
+		//imprime flecha de seleccion
+		//gotoxy(5,5+selec); SetColor(3, 7);printf("==>");
+		//imprime opciones
+		for(int i=0;i<n;i++){
+			gotoxy(30,2+i);
+			printf("                                         ");
+		}
+		for(int i=0;i<n;i++){
+			gotoxy(29,3+i);
+			printf("%s ",*(opciones+i));
+		}
+		printf ("\n");
+		gotoxy(25,2+selec);SetColor(240,7);printf("    %s",*(opciones+selec-1));
+		SetColor(7,0);
+		do{
+			tecla=getch();
+		}while(tecla!=72 && tecla!=80 && tecla!=13);
+		switch(tecla){
+			case 72:
+				selec--;
+				if(selec<1){
+					selec=n;
+				}
+				break;
+			case 80:
+				selec++;
+				if(selec>n){
+					selec=1;
+				}
+				break;
+			case 13:
+				repite=false;
+				break;
+		}
+	}while(repite==true);
+
+	return selec;
+}
+int menuPrincipal()
+{
+	int cont=1;
+	const char *opciones[]={"INGRESO DE DATOS   ","BUSCAR DATO       ","IMPRIMIR          ","BORRAR            ","SALIR             "}; //OPCIONES
+	int n=5; //NUMERO OPCIONES
+	int selec=1;
+	int tecla;
+	bool repite=true;
+
+	for (int i=1;i<=67;i++){
+			gotoxy(i,10);
+			printf ("-");
+			gotoxy(i,0);
+			printf ("-");
+		}
+		for (int i=0;i<=10;i++)
+		{
+			gotoxy(1,i);
+			printf ("|");
+			gotoxy(67,i);
+			printf ("|");
+		}
+		//imprime titulo
+		gotoxy(25,0); printf("MENU COMPLETO LISTAS DOBLES\n\n");
+	do{
+		//system("cls");
+		gotoxy(25,2); printf("    ");
+		gotoxy(25,3); printf("    ");
+		gotoxy(25,4); printf("    ");
+		gotoxy(25,5); printf("    ");
+		gotoxy(25,6); printf("    ");
+		gotoxy(25,7); printf("    ");
+		gotoxy(25,8); printf("    ");
+		//imprime flecha de seleccion
+		//gotoxy(5,5+selec); SetColor(3, 7);printf("==>");
+		//imprime opciones
+		for(int i=0;i<n;i++){
+			gotoxy(30,2+i);
+			printf("                                         ");
+		}
+		for(int i=0;i<n;i++){
+			gotoxy(29,3+i);
+			printf("%s ",*(opciones+i));
+		}
+		printf ("\n");
+		gotoxy(25,2+selec);SetColor(240,7);printf("    %s",*(opciones+selec-1));
+		SetColor(7,0);
+		do{
+			tecla=getch();
+		}while(tecla!=72 && tecla!=80 && tecla!=13);
+		switch(tecla){
+			case 72:
+				selec--;
+				if(selec<1){
+					selec=n;
+				}
+				break;
+			case 80:
+				selec++;
+				if(selec>n){
+					selec=1;
+				}
+				break;
+			case 13:
+				repite=false;
+				break;
+		}
+	}while(repite==true);
+
+	return selec;
+}
+long int  insertar (long int val, char *mensaje)
+{
+    int aux;
+    printf ("%s",mensaje);
+    do
+    {
+        fflush(stdin);
+        printf (": [ ]\b\b");
+        aux=scanf ("%d",&val);
+        if (aux==1 ) {
+            if (val >=0)
+            {
+
+            }
+            else
+            {
+                printf("\n Ingreso no valido");
+                aux=0;
+
+            }
+
+        }
+
+        else
+        {
+            printf ("\n Ingreso no valido");
+        }
+    }while (aux==0&& val <0);
+
+return val;
+
+}
+int verificarCantidad(int cont,int datoPosicion)
+{
+    if(datoPosicion> cont || datoPosicion == 0)
+    {
+        return 0;
+    }
+    else
+        return 1;
+}
+int mainCircular()
+{
+    ListaCircular listacircular;
+	int datoEntero = -1;
+	int opc;
+	int variableIngreso = 0;
+    int variableEliminar = 0;
+    int variableBuscar = 0;
+	int datoPosicion = -1;
+	int cont=0;
+    int validacionExistencia;
+	system ("cls");
+	do{
+    system ("cls");
+    opc=menuPrincipal();
+			switch(opc)
+			{
+			case 1:
+			    {
+                    system ("cls");
+                    if(listacircular.listaVacia()==true)
+                    {
+                        printf("\nPrimero se debe crear la lista con un dato\n");
+                        datoEntero=insertar(datoEntero,"INGRESE UN VALOR ENTERO");
+                        //crearLista(lista,datoEntero);
+                        listacircular.insertarInicio(datoEntero);
+                        printf("\nLista creada con exito\n");
+                        system("pause");
+                        cont+=1;
+                    }
+                    else
+                    {
+                            variableIngreso=menuIngreso();
+                            //retorna una de las 3 opciones
+
+                            if(variableIngreso==1)
+                            {
+                                system ("cls");
+                                datoEntero=insertar(datoEntero,"INGRESE UN VALOR ENTERO");
+                                listacircular.insertarInicio(datoEntero);
+                                //Ingresar al inicio
+                                cont+=1;
+                            }
+                            else if (variableIngreso==2)
+                            {
+                                system ("cls");
+                                datoEntero=insertar(datoEntero,"INGRESE UN VALOR ENTERO PARA EL DATO");
+                                printf("\n");
+                                datoPosicion=insertar(datoPosicion,"INGRESE UN VALOR ENTERO PARA LA POSICION");
+                                validacionExistencia = verificarCantidad(cont,datoPosicion);
+                                if(validacionExistencia==1)
+                                {
+                                    //Crear para ingresar al medio de donde quiera
+                                    listacircular.insertarCualquiera(datoEntero,datoPosicion);
+                                    cont+=1;
+                                }
+                                else if (validacionExistencia==0)
+                                {
+                                    printf("\nEL NODO AL QUE SE DESEA INGRESAR NO ES VALIDO\n");
+                                    system("pause");
+                                }
+                                //Ingreso al medio
+                            }
+                            else if(variableIngreso==3)
+                            {
+                                system ("cls");
+                                datoEntero=insertar(datoEntero,"INGRESE UN VALOR ENTERO");
+                                listacircular.insertarFinal(datoEntero);
+                                //Ingreso al final
+                                cont+=1;
+                            }
+                    }
+                    break;
+			    }
+			case 2:
+			    {
+
+			    if(listacircular.listaVacia()==true)
+                {
+                    system ("cls");
+                    printf("Aun no se han Ingresado datos !!");
+                    printf("\n");
+                    system("pause");
+                }
+                else
+                {
+                    system ("cls");
+                    variableBuscar=menuBuscar();
+                    if(variableBuscar==1)
+                    {
+                        system ("cls");
+                        //Buscar por posicion
+                        datoPosicion=insertar(datoEntero,"INGRESE LA POSICION DEL NODO");
+                        validacionExistencia = verificarCantidad(cont,datoPosicion);
+                        if(validacionExistencia==1)
+                        {
+                            //Crear funcion para la clase lista para poder buscar dato por posicion
+                            listacircular.buscarPorPosicion(datoPosicion);
+                        }
+                        else if (validacionExistencia==0)
+                        {
+                            printf("\nEL NODO QUE SE DESEA BUSCAR NO ES VALIDO\n");
+                            system("pause");
+                        }
+                    }
+                    else if(variableBuscar==2)
+                    {
+                        system ("cls");
+                        //Buscar por dato por valor entero que envio
+                        datoEntero = insertar(datoEntero,"INGRESE EL DATO QUE DESEA BUSCAR");
+                        listacircular.buscarPorValor(datoEntero);
+                    }
+                }
+				break;
+			    }
+			case 3:
+			    {
+			    if(listacircular.listaVacia()==true)
+                {
+                    system ("cls");
+                    printf("Aun no se han Ingresado datos !!");
+                    printf("\n");
+                    system("pause");
+                }
+                else
+                {
+                    //Imprimir la Lista
+                    system ("cls");
+                    printf("Actualmente se encuentran estos datos en la Lista: ");
+                    //listacircular.mostrar(ASCENDENTE);
+                    listacircular.imprimir();
+                    printf("\n");
+                    system("pause");
+                }
+                break;
+			    }
+			case 4:
+			    {
+                system ("cls");
+                if(listacircular.listaVacia()==true)
+                {
+                    system ("cls");
+                    printf("Aun no se han Ingresado datos !!");
+                    printf("\n");
+                    system("pause");
+                }
+                else
+                {
+                            variableEliminar=menuEliminar();
+                            //retorna una de las 3 opciones
+
+                            if(variableEliminar==1)
+                            {
+                                //Eliminar al inicio
+                                system ("cls");
+                                listacircular.borrarInicio();
+                            }
+                            else if (variableEliminar==2)
+                            {
+                                 //Eliminar al medio
+                                system ("cls");
+                                datoEntero=insertar(datoEntero,"INGRESE EL VALOR ENTERO QUE DESEA ELIMINAR");
+                                listacircular.borrarCualquiera(datoEntero);
+
+                            }
+                            else if(variableEliminar==3)
+                            {
+                                //Eliminar al final
+                                system ("cls");
+                                listacircular.borrarFinal();
+                            }
+                }
+				break;
+			    }
+			case 5:
+			    {
+				system ("cls");
+				printf("GRACIAS POR USAR EL PROGRAMA !! ;D");
+				break;
+			    }
+			}
+	}while(opc!=5);
+	gotoxy(3,17);
+	return (0);
+}
+
+int mainCircularDoble()
+{
+    ListaCircular listacircular;
+	int datoEntero = -1;
+	int opc;
+	int variableIngreso = 0;
+    int variableEliminar = 0;
+    int variableBuscar = 0;
+	int datoPosicion = -1;
+	int cont=0;
+    int validacionExistencia;
+	system ("cls");
+	do{
+    system ("cls");
+    opc=menuPrincipal();
+			switch(opc)
+			{
+			case 1:
+			    {
+                    system ("cls");
+                    if(listacircular.listaVacia()==true)
+                    {
+                        printf("\nPrimero se debe crear la lista con un dato\n");
+                        datoEntero=insertar(datoEntero,"INGRESE UN VALOR ENTERO");
+                        //crearLista(lista,datoEntero);
+                        listacircular.insertarInicio(datoEntero);
+                        printf("\nLista creada con exito\n");
+                        system("pause");
+                        cont+=1;
+                    }
+                    else
+                    {
+                            variableIngreso=menuIngreso();
+                            //retorna una de las 3 opciones
+
+                            if(variableIngreso==1)
+                            {
+                                system ("cls");
+                                datoEntero=insertar(datoEntero,"INGRESE UN VALOR ENTERO");
+                                listacircular.insertarInicio(datoEntero);
+                                //Ingresar al inicio
+                                cont+=1;
+                            }
+                            else if (variableIngreso==2)
+                            {
+                                system ("cls");
+                                datoEntero=insertar(datoEntero,"INGRESE UN VALOR ENTERO PARA EL DATO");
+                                printf("\n");
+                                datoPosicion=insertar(datoPosicion,"INGRESE UN VALOR ENTERO PARA LA POSICION");
+                                validacionExistencia = verificarCantidad(cont,datoPosicion);
+                                if(validacionExistencia==1)
+                                {
+                                    //Crear para ingresar al medio de donde quiera
+                                    listacircular.insertarCualquiera(datoEntero,datoPosicion);
+                                    cont+=1;
+                                }
+                                else if (validacionExistencia==0)
+                                {
+                                    printf("\nEL NODO AL QUE SE DESEA INGRESAR NO ES VALIDO\n");
+                                    system("pause");
+                                }
+                                //Ingreso al medio
+                            }
+                            else if(variableIngreso==3)
+                            {
+                                system ("cls");
+                                datoEntero=insertar(datoEntero,"INGRESE UN VALOR ENTERO");
+                                listacircular.insertarFinal(datoEntero);
+                                //Ingreso al final
+                                cont+=1;
+                            }
+                    }
+                    break;
+			    }
+			case 2:
+			    {
+
+			    if(listacircular.listaVacia()==true)
+                {
+                    system ("cls");
+                    printf("Aun no se han Ingresado datos !!");
+                    printf("\n");
+                    system("pause");
+                }
+                else
+                {
+                    system ("cls");
+                    variableBuscar=menuBuscar();
+                    if(variableBuscar==1)
+                    {
+                        system ("cls");
+                        //Buscar por posicion
+                        datoPosicion=insertar(datoEntero,"INGRESE LA POSICION DEL NODO");
+                        validacionExistencia = verificarCantidad(cont,datoPosicion);
+                        if(validacionExistencia==1)
+                        {
+                            //Crear funcion para la clase lista para poder buscar dato por posicion
+                            listacircular.buscarPorPosicion(datoPosicion);
+                        }
+                        else if (validacionExistencia==0)
+                        {
+                            printf("\nEL NODO QUE SE DESEA BUSCAR NO ES VALIDO\n");
+                            system("pause");
+                        }
+                    }
+                    else if(variableBuscar==2)
+                    {
+                        system ("cls");
+                        //Buscar por dato por valor entero que envio
+                        datoEntero = insertar(datoEntero,"INGRESE EL DATO QUE DESEA BUSCAR");
+                        listacircular.buscarPorValor(datoEntero);
+                    }
+                }
+				break;
+			    }
+			case 3:
+			    {
+			    if(listacircular.listaVacia()==true)
+                {
+                    system ("cls");
+                    printf("Aun no se han Ingresado datos !!");
+                    printf("\n");
+                    system("pause");
+                }
+                else
+                {
+                    //Imprimir la Lista
+                    system ("cls");
+                    printf("Actualmente se encuentran estos datos en la Lista: ");
+                    //listacircular.mostrar(ASCENDENTE);
+                    listacircular.imprimir();
+                    printf("\n");
+                    system("pause");
+                }
+                break;
+			    }
+			case 4:
+			    {
+                system ("cls");
+                if(listacircular.listaVacia()==true)
+                {
+                    system ("cls");
+                    printf("Aun no se han Ingresado datos !!");
+                    printf("\n");
+                    system("pause");
+                }
+                else
+                {
+                            variableEliminar=menuEliminar();
+                            //retorna una de las 3 opciones
+
+                            if(variableEliminar==1)
+                            {
+                                //Eliminar al inicio
+                                system ("cls");
+                                listacircular.borrarInicio();
+                            }
+                            else if (variableEliminar==2)
+                            {
+                                 //Eliminar al medio
+                                system ("cls");
+                                datoEntero=insertar(datoEntero,"INGRESE EL VALOR ENTERO QUE DESEA ELIMINAR");
+                                listacircular.borrarCualquiera(datoEntero);
+
+                            }
+                            else if(variableEliminar==3)
+                            {
+                                //Eliminar al final
+                                system ("cls");
+                                listacircular.borrarFinal();
+                            }
+                }
+				break;
+			    }
+			case 5:
+			    {
+				system ("cls");
+				printf("GRACIAS POR USAR EL PROGRAMA !! ;D");
+				break;
+			    }
+			}
+	}while(opc!=5);
+	gotoxy(3,17);
+	return (0);
+}
+
+int menuBuscar1()
+{
+	int cont=1;
+	const char *opciones[]={"BUSCAR POR POSICION","BUSCAR POR DATO    "}; //OPCIONES
+	int n=2; //NUMERO OPCIONES
+	int selec=1;
+	int tecla;
+	bool repite=true;
+
+	for (int i=1;i<=67;i++)
+        {
+			gotoxy(i,8);
+			printf ("-");
+			gotoxy(i,0);
+			printf ("-");
+		}
+		for (int i=0;i<=7;i++)
+		{
+			gotoxy(1,i);
+			printf ("|");
+			gotoxy(67,i);
+			printf ("|");
+		}
+		//imprime titulo
+		gotoxy(25,0); printf("MENU DE BUSCAR\n\n");
+	do{
+		//system("cls");
+		gotoxy(25,2); printf("    ");
+		gotoxy(25,3); printf("    ");
+		gotoxy(25,4); printf("    ");
+		gotoxy(25,5); printf("    ");
+		gotoxy(25,6); printf("    ");
+		gotoxy(25,7); printf("    ");
+		gotoxy(25,8); printf("    ");
+		//imprime flecha de seleccion
+		//gotoxy(5,5+selec); SetColor(3, 7);printf("==>");
+		//imprime opciones
+		for(int i=0;i<n;i++){
+			gotoxy(30,2+i);
+			printf("                                         ");
+		}
+		for(int i=0;i<n;i++){
+			gotoxy(29,3+i);
+			printf("%s ",*(opciones+i));
+		}
+		printf ("\n");
+		gotoxy(25,2+selec);SetColor(240,7);printf("    %s",*(opciones+selec-1));
+		SetColor(7,0);
+		do{
+			tecla=getch();
+		}while(tecla!=72 && tecla!=80 && tecla!=13);
+		switch(tecla){
+			case 72:
+				selec--;
+				if(selec<1){
+					selec=n;
+				}
+				break;
+			case 80:
+				selec++;
+				if(selec>n){
+					selec=1;
+				}
+				break;
+			case 13:
+				repite=false;
+				break;
+		}
+	}while(repite==true);
+
+	return selec;
+}
+
+int menuEliminar1()
+{
+	int cont=1;
+	const char *opciones[]={"ELIMINAR AL INICIO          ","ELIMINAR CUALQUIERA         ","ELIMINAR AL FINAL           "}; //OPCIONES
+	int n=3; //NUMERO OPCIONES
+	int selec=1;
+	int tecla;
+	bool repite=true;
+
+	for (int i=1;i<=67;i++)
+        {
+			gotoxy(i,8);
+			printf ("-");
+			gotoxy(i,0);
+			printf ("-");
+		}
+		for (int i=0;i<=7;i++)
+		{
+			gotoxy(1,i);
+			printf ("|");
+			gotoxy(67,i);
+			printf ("|");
+		}
+		//imprime titulo
+		gotoxy(25,0); printf("MENU DE ELIMINAR\n\n");
+	do{
+		//system("cls");
+		gotoxy(25,2); printf("    ");
+		gotoxy(25,3); printf("    ");
+		gotoxy(25,4); printf("    ");
+		gotoxy(25,5); printf("    ");
+		gotoxy(25,6); printf("    ");
+		gotoxy(25,7); printf("    ");
+		gotoxy(25,8); printf("    ");
+		//imprime flecha de seleccion
+		//gotoxy(5,5+selec); SetColor(3, 7);printf("==>");
+		//imprime opciones
+		for(int i=0;i<n;i++){
+			gotoxy(30,2+i);
+			printf("                                         ");
+		}
+		for(int i=0;i<n;i++){
+			gotoxy(29,3+i);
+			printf("%s ",*(opciones+i));
+		}
+		printf ("\n");
+		gotoxy(25,2+selec);SetColor(240,7);printf("    %s",*(opciones+selec-1));
+		SetColor(7,0);
+		do{
+			tecla=getch();
+		}while(tecla!=72 && tecla!=80 && tecla!=13);
+		switch(tecla){
+			case 72:
+				selec--;
+				if(selec<1){
+					selec=n;
+				}
+				break;
+			case 80:
+				selec++;
+				if(selec>n){
+					selec=1;
+				}
+				break;
+			case 13:
+				repite=false;
+				break;
+		}
+	}while(repite==true);
+
+	return selec;
+}
+int menuIngreso1()
+{
+	int cont=1;
+	const char *opciones[]={"INGRESAR AL INICIO","INGRESAR EN MEDIO ","INGRESAR AL FINAL "}; //OPCIONES
+	int n=3; //NUMERO OPCIONES
+	int selec=1;
+	int tecla;
+	bool repite=true;
+
+	for (int i=1;i<=67;i++){
+			gotoxy(i,8);
+			printf ("-");
+			gotoxy(i,0);
+			printf ("-");
+		}
+		for (int i=0;i<=7;i++)
+		{
+			gotoxy(1,i);
+			printf ("|");
+			gotoxy(67,i);
+			printf ("|");
+		}
+		//imprime titulo
+		gotoxy(25,0); printf("MENU DE INGRESO\n\n");
+	do{
+		//system("cls");
+		gotoxy(25,2); printf("    ");
+		gotoxy(25,3); printf("    ");
+		gotoxy(25,4); printf("    ");
+		gotoxy(25,5); printf("    ");
+		gotoxy(25,6); printf("    ");
+		gotoxy(25,7); printf("    ");
+		gotoxy(25,8); printf("    ");
+		//imprime flecha de seleccion
+		//gotoxy(5,5+selec); SetColor(3, 7);printf("==>");
+		//imprime opciones
+		for(int i=0;i<n;i++){
+			gotoxy(30,2+i);
+			printf("                                         ");
+		}
+		for(int i=0;i<n;i++){
+			gotoxy(29,3+i);
+			printf("%s ",*(opciones+i));
+		}
+		printf ("\n");
+		gotoxy(25,2+selec);SetColor(240,7);printf("    %s",*(opciones+selec-1));
+		SetColor(7,0);
+		do{
+			tecla=getch();
+		}while(tecla!=72 && tecla!=80 && tecla!=13);
+		switch(tecla){
+			case 72:
+				selec--;
+				if(selec<1){
+					selec=n;
+				}
+				break;
+			case 80:
+				selec++;
+				if(selec>n){
+					selec=1;
+				}
+				break;
+			case 13:
+				repite=false;
+				break;
+		}
+	}while(repite==true);
+
+	return selec;
+}
+int menuPrincipal1()
+{
+	int cont=1;
+	const char *opciones[]={"INGRESO DE DATOS   ","BUSCAR DATO       ","IMPRIMIR          ","BORRAR            ","SALIR             "}; //OPCIONES
+	int n=5; //NUMERO OPCIONES
+	int selec=1;
+	int tecla;
+	bool repite=true;
+
+	for (int i=1;i<=67;i++){
+			gotoxy(i,10);
+			printf ("-");
+			gotoxy(i,0);
+			printf ("-");
+		}
+		for (int i=0;i<=10;i++)
+		{
+			gotoxy(1,i);
+			printf ("|");
+			gotoxy(67,i);
+			printf ("|");
+		}
+		//imprime titulo
+		gotoxy(25,0); printf("MENU COMPLETO LISTAS DOBLES\n\n");
+	do{
+		//system("cls");
+		gotoxy(25,2); printf("    ");
+		gotoxy(25,3); printf("    ");
+		gotoxy(25,4); printf("    ");
+		gotoxy(25,5); printf("    ");
+		gotoxy(25,6); printf("    ");
+		gotoxy(25,7); printf("    ");
+		gotoxy(25,8); printf("    ");
+		//imprime flecha de seleccion
+		//gotoxy(5,5+selec); SetColor(3, 7);printf("==>");
+		//imprime opciones
+		for(int i=0;i<n;i++){
+			gotoxy(30,2+i);
+			printf("                                         ");
+		}
+		for(int i=0;i<n;i++){
+			gotoxy(29,3+i);
+			printf("%s ",*(opciones+i));
+		}
+		printf ("\n");
+		gotoxy(25,2+selec);SetColor(240,7);printf("    %s",*(opciones+selec-1));
+		SetColor(7,0);
+		do{
+			tecla=getch();
+		}while(tecla!=72 && tecla!=80 && tecla!=13);
+		switch(tecla){
+			case 72:
+				selec--;
+				if(selec<1){
+					selec=n;
+				}
+				break;
+			case 80:
+				selec++;
+				if(selec>n){
+					selec=1;
+				}
+				break;
+			case 13:
+				repite=false;
+				break;
+		}
+	}while(repite==true);
+
+	return selec;
+}
+long int  insertar1 (long int val, char *mensaje)
+{
+    int aux;
+    printf ("%s",mensaje);
+    do
+    {
+        fflush(stdin);
+        printf (": [ ]\b\b");
+        aux=scanf ("%d",&val);
+        if (aux==1 ) {
+            if (val >=0)
+            {
+
+            }
+            else
+            {
+                printf("\n Ingreso no valido");
+                aux=0;
+
+            }
+
+        }
+
+        else
+        {
+            printf ("\n Ingreso no valido");
+        }
+    }while (aux==0&& val <0);
+
+return val;
+
+}
+int verificarCantidad1(int cont,int datoPosicion)
+{
+    if(datoPosicion> cont || datoPosicion == 0)
+    {
+        return 0;
+    }
+    else
+        return 1;
+}
+int mainDoble()
+{
+    ListaDoble listadoble;
+	int datoEntero = -1;
+	int opc;
+	int variableIngreso = 0;
+    int variableEliminar = 0;
+    int variableBuscar = 0;
+	int datoPosicion = -1;
+	int cont=0;
+    int validacionExistencia;
+	system ("cls");
+	do{
+    system ("cls");
+    opc=menuPrincipal1();
+			switch(opc)
+			{
+			case 1:
+			    {
+                    system ("cls");
+                    if(listadoble.listaVacia()==true)
+                    {
+                        printf("\nPrimero se debe crear la lista con un dato\n");
+                        datoEntero=insertar1(datoEntero,"INGRESE UN VALOR ENTERO");
+                        //crearLista(lista,datoEntero);
+                        listadoble.insertarInicio(datoEntero);
+                        printf("\nLista creada con exito\n");
+                        system("pause");
+                        cont+=1;
+                    }
+                    else
+                    {
+                            variableIngreso=menuIngreso1();
+                            //retorna una de las 3 opciones
+
+                            if(variableIngreso==1)
+                            {
+                                system ("cls");
+                                datoEntero=insertar1(datoEntero,"INGRESE UN VALOR ENTERO");
+                                listadoble.insertarInicio(datoEntero);
+                                //Ingresar al inicio
+                                cont+=1;
+                            }
+                            else if (variableIngreso==2)
+                            {
+                                system ("cls");
+                                datoEntero=insertar1(datoEntero,"INGRESE UN VALOR ENTERO PARA EL DATO");
+                                printf("\n");
+                                datoPosicion=insertar1(datoPosicion,"INGRESE UN VALOR ENTERO PARA LA POSICION");
+                                validacionExistencia = verificarCantidad(cont,datoPosicion);
+                                if(validacionExistencia==1)
+                                {
+                                    //Crear para ingresar al medio de donde quiera
+                                    listadoble.insertarCualquiera(datoEntero,datoPosicion);
+                                    cont+=1;
+                                }
+                                else if (validacionExistencia==0)
+                                {
+                                    printf("\nEL NODO AL QUE SE DESEA INGRESAR NO ES VALIDO\n");
+                                    system("pause");
+                                }
+                                //Ingreso al medio
+                            }
+                            else if(variableIngreso==3)
+                            {
+                                system ("cls");
+                                datoEntero=insertar1(datoEntero,"INGRESE UN VALOR ENTERO");
+                                listadoble.insertarFinal(datoEntero);
+                                //Ingreso al final
+                                cont+=1;
+                            }
+                    }
+                    break;
+			    }
+			case 2:
+			    {
+
+			    if(listadoble.listaVacia()==true)
+                {
+                    system ("cls");
+                    printf("Aun no se han Ingresado datos !!");
+                    printf("\n");
+                    system("pause");
+                }
+                else
+                {
+                    system ("cls");
+                    variableBuscar=menuBuscar1();
+                    if(variableBuscar==1)
+                    {
+                        system ("cls");
+                        //Buscar por posicion
+                        datoPosicion=insertar1(datoEntero,"INGRESE LA POSICION DEL NODO");
+                        validacionExistencia = verificarCantidad1(cont,datoPosicion);
+                        if(validacionExistencia==1)
+                        {
+                            //Crear funcion para la clase lista para poder buscar dato por posicion
+                            listadoble.buscarPorPosicion(datoPosicion);
+                        }
+                        else if (validacionExistencia==0)
+                        {
+                            printf("\nEL NODO QUE SE DESEA BUSCAR NO ES VALIDO\n");
+                            system("pause");
+                        }
+                    }
+                    else if(variableBuscar==2)
+                    {
+                        system ("cls");
+                        //Buscar por dato por valor entero que envio
+                        datoEntero = insertar1(datoEntero,"INGRESE EL DATO QUE DESEA BUSCAR");
+                        listadoble.buscarPorValor(datoEntero);
+                    }
+                }
+				break;
+			    }
+			case 3:
+			    {
+			    if(listadoble.listaVacia()==true)
+                {
+                    system ("cls");
+                    printf("Aun no se han Ingresado datos !!");
+                    printf("\n");
+                    system("pause");
+                }
+                else
+                {
+                    //Imprimir la Lista
+                    system ("cls");
+                    printf("Actualmente se encuentran estos datos en la Lista: ");
+                    //listadoble.mostrar(ASCENDENTE);
+                    listadoble.imprimir();
+                    printf("\n");
+                    system("pause");
+                }
+                break;
+			    }
+			case 4:
+			    {
+                system ("cls");
+                if(listadoble.listaVacia()==true)
+                {
+                    system ("cls");
+                    printf("Aun no se han Ingresado datos !!");
+                    printf("\n");
+                    system("pause");
+                }
+                else
+                {
+                            variableEliminar=menuEliminar1();
+                            //retorna una de las 3 opciones
+
+                            if(variableEliminar==1)
+                            {
+                                //Eliminar al inicio
+                                system ("cls");
+                                listadoble.borrarInicio();
+                            }
+                            else if (variableEliminar==2)
+                            {
+                                 //Eliminar al medio
+                                system ("cls");
+                                datoEntero=insertar1(datoEntero,"INGRESE EL VALOR ENTERO QUE DESEA ELIMINAR");
+                                listadoble.borrarCualquiera(datoEntero);
+
+                            }
+                            else if(variableEliminar==3)
+                            {
+                                //Eliminar al final
+                                system ("cls");
+                                listadoble.borrarFinal();
+                            }
+                }
+				break;
+			    }
+			case 5:
+			    {
+				system ("cls");
+				printf("GRACIAS POR USAR EL PROGRAMA !! ;D");
+				break;
+			    }
+			}
+	}while(opc!=5);
+	gotoxy(3,17);
+	return (0);
+}
+
+
+int solo_numeros(int l);
+int  ingreso (int val);
+void gotoxy(int x,int y);
+void cambiarcolor(int X);
+int menu_seleccion(const char menu[],  int n_opciones);
+int solo_numeros(int l)
+{
+	char caracter;
+	int i=0;
+		i=0;
+		fflush(stdin);
+		caracter=getch();
+		while(caracter!=13)
+		{
+		fflush(stdin);
+		if(caracter!=8)
+			{
+				if((caracter>=48)&&(caracter<=57))
+				{
+					if(caracter!=13)
+					{
+						printf("%c",caracter);
+						fflush(stdin);
+						l=(l*10)+(caracter-48);
+						i++;
+					}
+				}
+			}
+			else
+			{
+				if(i>0)
+				{
+					printf("\b \b");//mueve el cursor a la izquierda
+					l=(l/10);
+					i--;
+				}
+			}
+			caracter=getch();
+		}
+	return l;
+}
+
+int  ingreso2(int val)
+{
+    int aux;
+    do
+    {
+         fflush(stdin);
+
+    aux=scanf ("%d",&val);
+    if (aux==1 ) {
+        if (val >=0)
+        {
+            printf ("\n INGRESO SATISFACTORIO...\n");
+            system("color B");
+
+
+        }
+        else {
+            printf("\n ingreso no valido");
+            aux=0;
+            system("color C");
+        }
+
+    }
+
+    else
+    {
+        printf ("\n\n INCORRECTO \n ");
+        system("color C");
+    }
+
+
+    }while (aux==0&& val <-1);
+
+return val;
+
+}
+
+
+
+void cambiarcolor(int X)
+{
+    SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),X);
+}
+
+int menu_seleccion(const char menu[],  int n_opciones)
+{
+	int seleccion=1,tecla=0;
+	bool repite=true;
+
+	char caracter;
+	do
+	{
+	    cambiarcolor(8);
+		system("cls");
+		//system("color 3F");
+		gotoxy(8,3+seleccion);
+		cambiarcolor(7);
+
+
+		if (seleccion==1)
+        {   cambiarcolor(240);
+             gotoxy(15,4);
+		  printf("INGRESO DE LISTA          ");
+		  cambiarcolor(9);
+		   gotoxy(15,5);
+		  printf("BUSCAR POSICION           ");
+		   gotoxy(15,6);
+		  printf("BORRAR PRIMER ELEMENTO     ");
+		   gotoxy(15,7);
+		  printf("IMPRIMIR LISTA            ");
+		  gotoxy(15,8);
+		  printf("MODIFICAR DATOS           ");
+		  gotoxy(15,9);
+		  printf("MODIFICAR PRIMER DATO     ");
+
+		  gotoxy(15,10);
+		  printf("SALIR");
+        }
+        if (seleccion==2)
+        {
+             cambiarcolor(9);
+             gotoxy(15,4);
+		  printf("INGRESO DE LISTA          ");
+		  cambiarcolor(240);
+		   gotoxy(15,5);
+		  printf("BUSCAR POSICION           ");
+		  cambiarcolor(9);
+		   gotoxy(15,6);
+		  printf("BORRAR PRIMER ELEMENTO    ");
+		   gotoxy(15,7);
+		  printf("IMPRIMIR LISTA            ");
+		  gotoxy(15,8);
+		  printf("MODIFICAR DATOS           ");
+		  gotoxy(15,9);
+		  printf("MODIFICAR PRIMER DATO     ");
+
+		  gotoxy(15,10);
+		  printf("SALIR");
+        }
+        if (seleccion==3)
+        {
+             cambiarcolor(9);
+             gotoxy(15,4);
+		  printf("INGRESO DE LISTA          ");
+
+		   gotoxy(15,5);
+		  printf("BUSCAR POSICION           ");
+		   gotoxy(15,6);
+		   cambiarcolor(240);
+		  printf("BORRAR PRIMER ELEMENTO    ");
+		  cambiarcolor(9);
+		   gotoxy(15,7);
+		  printf("IMPRIMIR LISTA            ");
+		 gotoxy(15,8);
+		  printf("MODIFICAR DATOS           ");
+		  gotoxy(15,9);
+		  printf("MODIFICAR PRIMER DATO     ");
+
+		  gotoxy(15,10);
+		  printf("SALIR");
+        }
+        if (seleccion==4)
+        {
+             cambiarcolor(9);
+             gotoxy(15,4);
+		  printf("INGRESO DE LISTA          ");
+
+		   gotoxy(15,5);
+		  printf("BUSCAR POSICION           ");
+		   gotoxy(15,6);
+		   cambiarcolor(9);
+		  printf("BORRAR PRIMER ELEMENTO    ");
+		  cambiarcolor(240);
+		   gotoxy(15,7);
+		  printf("IMPRIMIR LISTA            ");
+		  cambiarcolor(9);
+		 gotoxy(15,8);
+		  printf("MODIFICAR DATOS           ");
+		  gotoxy(15,9);
+		  printf("MODIFICAR PRIMER DATO     ");
+
+		  gotoxy(15,10);
+		  printf("SALIR");
+        }
+
+
+        if (seleccion==5)
+        {
+             cambiarcolor(9);
+             gotoxy(15,4);
+		  printf("INGRESO DE LISTA          ");
+		  cambiarcolor(9);
+		   gotoxy(15,5);
+		  printf("BUSCAR POSICION           ");
+		   gotoxy(15,6);
+		  printf("BORRAR PRIMER ELEMENTO    ");
+		   gotoxy(15,7);
+		  printf("IMPRIMIR LISTA            ");
+		  gotoxy(15,8);
+		  cambiarcolor(240);
+		  printf("MODIFICAR DATOS           ");
+		  cambiarcolor(9);
+		  gotoxy(15,9);
+		  printf("MODIFICAR PRIMER DATO     ");
+
+		  gotoxy(15,10);
+		  printf("SALIR");
+        }
+        if (seleccion==6)
+        {
+             cambiarcolor(9);
+             gotoxy(15,4);
+		  printf("INGRESO DE LISTA          ");
+		  cambiarcolor(9);
+		   gotoxy(15,5);
+		  printf("BUSCAR POSICION           ");
+		   gotoxy(15,6);
+		  printf("BORRAR PRIMER ELEMENTO    ");
+		   gotoxy(15,7);
+		  printf("IMPRIMIR LISTA            ");
+		  gotoxy(15,8);
+		  printf("MODIFICAR DATOS           ");
+		  cambiarcolor(240);
+		  gotoxy(15,9);
+		  printf("MODIFICAR PRIMER DATO     ");
+          cambiarcolor(9);
+		  gotoxy(15,10);
+		  printf("SALIR                     ");
+        }
+        if (seleccion==7)
+        {
+             cambiarcolor(9);
+             gotoxy(15,4);
+		  printf("INGRESO DE LISTA          ");
+		  cambiarcolor(9);
+		   gotoxy(15,5);
+		  printf("BUSCAR POSICION           ");
+		   gotoxy(15,6);
+		  printf("BORRAR PRIMER ELEMENTO    ");
+		   gotoxy(15,7);
+		  printf("IMPRIMIR LISTA            ");
+		  gotoxy(15,8);
+		  printf("MODIFICAR DATOS           ");
+		  gotoxy(15,9);
+		  printf("MODIFICAR PRIMER DATO     ");
+          cambiarcolor(240);
+		  gotoxy(15,10);
+		  printf("SALIR                     ");
+        }
+
+
+
+
+		do
+		{
+			tecla=getch();
+		}while((tecla!=72)&&(tecla!=80)&&(tecla!=13)&&(tecla!=42)&&(tecla!=59));
+		switch(tecla)
+		{
+			case 72:{
+				seleccion--;
+				if(seleccion<1)
+				{
+
+					seleccion=n_opciones;
+				}
+				break;
+				}
+			case 80:{
+				seleccion++;
+				if(seleccion>n_opciones)
+			 	{
+
+					seleccion=1;
+				}
+				break;
+				}
+			case 13:{
+				repite=false;
+				break;
+				}
+			case 59:
+				{
+					system("cls");
+					FILE *datos=fopen("Ayuda.txt","rb");
+					while(feof(datos)==0)
+					{
+						caracter=fgetc(datos);
+						printf("%c",caracter);
+					}
+					getch();
+					fclose(datos);
+					break;
+				}
+		}
+	}while(repite);
+	return seleccion;
+}
+
+
+int mainSimple()
+{
+	bool repite=true;
+	const char *menu="Menu principal";
+	int opcion;
+	int n_opciones=7,dato;
+	int datoEntero=0,posicion=-1;;
+	ListaSimple lista;
+
+    do
+    {
+        opcion=menu_seleccion(menu,n_opciones);
+
+        switch (opcion)
+        {
+        case 1:
+            {
+                system("cls");
+                printf("*********HA ELEGIDO EL IGRESO A LA LISTA**************\n\n");
+                printf ("\n INGRESE EL VALOR ENTERO POSITIVO:");
+                datoEntero=0;
+                datoEntero=solo_numeros(datoEntero);
+               lista.insertar(datoEntero);
+
+
+                break;
+            }
+        case 2:
+            {
+                printf("********HA ELEGIDO BUSCAR EN LA LISTA*************\n\n");
+                printf("\n INGRESE LA POSICION QUE DEESEA BUSCAR :  ");
+                posicion=ingreso2(posicion);
+                lista.buscarPosicion(posicion);
+
+                getch();
+                break;
+            }
+        case 3:
+            {
+                printf("\n\n*******HA ELEGIDO BORRAR PRIMERA POSICION******\n\n");
+                lista.borrarprimero();
+                break;
+            }
+        case 4:
+            {system("cls");
+                printf("**********HA ELEGIDO IMPRIMIR LA LISTA**********\n\n");
+
+            printf("******LA LISTA ES******* \n \n");
+            lista.imprmir();
+            getch();
+                break;
+            }
+
+
+        case 5:
+            {
+                system("cls");
+                printf("**********HA ELEGIDO MODIFICAR LISTA**********\n\n");
+                printf("\n INGRESE EL DATO A MODIFICAR:  ");
+                dato=0;
+                dato=solo_numeros(dato);
+                printf("\n INGRESE EL DATO POR EL CUAL MODIFICAR:  ");
+                datoEntero=0;
+                datoEntero=solo_numeros(datoEntero);
+                lista.modificarCualquiera(dato,datoEntero);
+                break;
+            }
+        case 6:
+            {
+                system("cls");
+                printf("\n\n**********HA ELEGIDO MODIFICAR PRIMER ELEMENTO**********\n\n");
+                printf("\n INGRESE EL DATO POR EL CULA MODIFICAR:  ");
+                datoEntero=0;
+                datoEntero=solo_numeros(datoEntero);
+                lista.modificarPimero(datoEntero);
+                break;
+            }
+        case 7:
+            {
+                repite=FALSE;
+                break;
+            }
+        }
+
+    }
+    while(repite);
+
+}
+
+int mainMenu()
+{
+	int cont=1;
+	const char *opciones[]={"LISTA CIRCULAR                     ","LISTA CIRCULAR DOBLEMENTE ENLAZADA ","LISTA DOBLE                        ","LISTA SIMPLE                       ","SALIR                              "}; //OPCIONES
+	int n=5; //NUMERO OPCIONES
+	int selec=1;
+	int tecla;
+	bool repite=true;
+
+	for (int i=1;i<=67;i++){
+			gotoxy(i,10);
+			printf ("-");
+			gotoxy(i,0);
+			printf ("-");
+		}
+		for (int i=0;i<=10;i++)
+		{
+			gotoxy(1,i);
+			printf ("|");
+			gotoxy(67,i);
+			printf ("|");
+		}
+		//imprime titulo
+		gotoxy(25,0); printf("MENU COMPLETO LISTAS DOBLES\n\n");
+	do{
+		//system("cls");
+		gotoxy(25,2); printf("    ");
+		gotoxy(25,3); printf("    ");
+		gotoxy(25,4); printf("    ");
+		gotoxy(25,5); printf("    ");
+		gotoxy(25,6); printf("    ");
+		gotoxy(25,7); printf("    ");
+		gotoxy(25,8); printf("    ");
+		//imprime flecha de seleccion
+		//gotoxy(5,5+selec); SetColor(3, 7);printf("==>");
+		//imprime opciones
+		for(int i=0;i<n;i++){
+			gotoxy(30,2+i);
+			printf("                                         ");
+		}
+		for(int i=0;i<n;i++){
+			gotoxy(29,3+i);
+			printf("%s ",*(opciones+i));
+		}
+		printf ("\n");
+		gotoxy(25,2+selec);SetColor(240,7);printf("    %s",*(opciones+selec-1));
+		SetColor(7,0);
+		do{
+			tecla=getch();
+		}while(tecla!=72 && tecla!=80 && tecla!=13);
+		switch(tecla){
+			case 72:
+				selec--;
+				if(selec<1){
+					selec=n;
+				}
+				break;
+			case 80:
+				selec++;
+				if(selec>n){
+					selec=1;
+				}
+				break;
+			case 13:
+				repite=false;
+				break;
+		}
+	}while(repite==true);
+
+	return selec;
+} 
+void sayHello () {
+    int opc;
+    do{
+    system ("cls");
+    opc=mainMenu();
+			switch(opc)
+			{
+			case 1:
+                mainCircular();
+                break;
+
+			case 2:
+			    mainCircularDoble();
+                break;
+
+			case 3:
+			    mainDoble();
+                break;
+
+			case 4:
+			    mainSimple();
+				break;
+			}
+	}while(opc!=5);
+	gotoxy(3,17);
+}
