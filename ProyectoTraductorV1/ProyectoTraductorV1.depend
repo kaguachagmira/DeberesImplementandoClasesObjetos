@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1516230431 source:c:\users\usuario\desktop\proyectotraductorv1\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"pila.h"
+	<windows.h>
+	<string.h>
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<ctime>
+	<ctype.h>
+	<string.h>
+	<string>
+	<stdio.h>
+	<conio.h>
+
+1516224645 c:\users\usuario\desktop\proyectotraductorv1\pila.h
+	<string.h>
+	<iostream>
+
+1516283919 source:c:\users\usuario\desktop\proyectotraductorv1\main.cpp
+	<iostream>
+	"pila.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	<iostream>
+	<string.h>
+	<fstream>
+	"imagen.h"
+
+1516224444 c:\users\usuario\desktop\proyectotraductorv1\funciones2.h
+	<iostream>
+	"pila.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	<iostream>
+	<string.h>
+	<fstream>
+	"imagen.h"
+
+1511911584 c:\users\usuario\desktop\proyectotraductorv1\imagen.h
+	<conio.h>
+	<stdio.h>
+	<Windows.h>
+
