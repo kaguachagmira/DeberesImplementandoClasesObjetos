@@ -48,3 +48,77 @@
 	<stdio.h>
 	<Windows.h>
 
+1516230432 source:g:\proyectotraductorv2.0\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"pila.h"
+	<windows.h>
+	<string.h>
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<ctime>
+	<ctype.h>
+	<string.h>
+	<string>
+	<stdio.h>
+	<conio.h>
+
+1516224646 g:\proyectotraductorv2.0\pila.h
+	<string.h>
+	<iostream>
+
+1516230432 source:f:\proyectotraductorv2.0\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"pila.h"
+	<windows.h>
+	<string.h>
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<ctime>
+	<ctype.h>
+	<string.h>
+	<string>
+	<stdio.h>
+	<conio.h>
+
+1516224646 f:\proyectotraductorv2.0\pila.h
+	<string.h>
+	<iostream>
+
+1516328268 source:f:\proyectotraductorv2.0\main.cpp
+	<iostream>
+	"pila.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	<iostream>
+	<string.h>
+	<fstream>
+	"imagen.h"
+
+1511911584 f:\proyectotraductorv2.0\imagen.h
+	<conio.h>
+	<stdio.h>
+	<Windows.h>
+
+1516326298 source:g:\proyectotraductorv2.0\main.cpp
+	<iostream>
+	"pila.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	<iostream>
+	<string.h>
+	<fstream>
+	"imagen.h"
+
+1511911584 g:\proyectotraductorv2.0\imagen.h
+	<conio.h>
+	<stdio.h>
+	<Windows.h>
+

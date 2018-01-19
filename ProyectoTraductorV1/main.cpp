@@ -251,18 +251,19 @@ char *opcionesRecuperar(char recuperaArc[])
 
 int menuPrincipal2()
 {
-	system("color 03");
+    system("color 72");
 	int cont=1;
     long x=0,y=0;
-    gotoxy(3, 100);
+    gotoxy(200, 1);
 	printf("F12 AYUDA");
-	const char *opciones[]={"INGRESO DE DATOS   ","TRADUCIR DATO      ","IMPRIMIR COLAS     ","BACKUP              ","SALIR             "}; //OPCIONES
+	const char *opciones[]={"INGRESO DE DATOS   ","TRADUCIR DATO       ","IMPRIMIR COLAS     ","BACKUP             ","SALIR              "}; //OPCIONES
 	int n=5; //NUMERO OPCIONES
 	int selec=1;
 	int tecla;
 	bool repite=true;
 
-	for (int i=1;i<=67;i++){
+	for (int i=1;i<=67;i++)
+        {
 			gotoxy(i,10);
 			printf ("-");
 			gotoxy(i,0);
@@ -300,9 +301,10 @@ int menuPrincipal2()
 			gotoxy(29,3+i);
 			printf("%s ",*(opciones+i));
 		}
-		printf ("\n");
-		gotoxy(25,2+selec);SetColor(240,7);printf("    %s",*(opciones+selec-1));
-		SetColor(7,0);
+        gotoxy(300, 0);
+        printf("F12 AYUDA");
+		gotoxy(25,2+selec);SetColor(240,240);printf("    %s",*(opciones+selec-1));
+		SetColor(2,7);
 
 		do{
                 fflush(stdin);
@@ -335,12 +337,91 @@ int menuPrincipal2()
 	return selec;
 
 }
+int menubackupmouse()
+{
+    long x,y;
+    system("color 72");
+	int cont=1;
+	const char *opciones[]={"CREAR         ","              ","RECUPERAR     ","              "}; //OPCIONES
+	int n=4; //NUMERO OPCIONES
+	int selec=1;
+	int tecla;
+	bool repite=true;
 
-int menubackip()
+	for (int i=1;i<=67;i++)
+        {
+			gotoxy(i,9);
+			printf ("-");
+			gotoxy(i,0);
+			printf ("-");
+		}
+		for (int i=0;i<=9;i++)
+		{
+			gotoxy(1,i);
+			printf ("|");
+			gotoxy(67,i);
+			printf ("|");
+		}
+		//imprime titulo
+		gotoxy(25,0); printf("SELECCIONE LA OPCION\n\n");
+	do{
+		//system("cls");
+		gotoxy(25,2); printf("    ");
+		gotoxy(25,3); printf("    ");
+		gotoxy(25,4); printf("    ");
+		gotoxy(25,5); printf("    ");
+		gotoxy(25,6); printf("    ");
+		gotoxy(25,7); printf("    ");
+		gotoxy(25,8); printf("    ");
+		//imprime flecha de seleccion
+		//gotoxy(5,5+selec); SetColor(3, 7);printf("==>");
+		//imprime opciones
+		for(int i=0;i<n;i++){
+			gotoxy(30,2+i);
+			printf("                                         ");
+		}
+		for(int i=0;i<n;i++){
+			gotoxy(29,3+i);
+			printf("%s ",*(opciones+i));
+		}
+		printf ("\n");
+		gotoxy(25,2+selec);SetColor(240,240);printf("    %s",*(opciones+selec-1));
+		SetColor(2,7);
+		while(!GetAsyncKeyState(MOUSEEVENTF_MOVE&&MOUSEEVENTF_WHEEL))
+		{
+
+            POINT mouse;
+            HDC _hdc = GetDC(NULL);
+            if(_hdc)
+            {
+
+                GetCursorPos(&mouse);
+                x=mouse.x;
+                y=mouse.y;
+                //printf("La posicion del mouse es %d ; %d \n", mouse.x,mouse.y);
+                //Sleep(3000);
+            }
+            fflush(stdin);
+            //tecla=getch();
+
+		}
+		//primera opcion
+        if((y>=60 && y<=83) && (x>=150 && x<=286))
+        {
+            return 1;
+        }
+        //segunda opcion
+        else if ((y>=83 && y<=103) && (x>=150 && x<=286))
+        {
+            return 2;
+        }
+	}while(repite==true);
+}
+int menubackupteclas()
 {
     system("color 03");
 	int cont=1;
-	const char *opciones[]={"    CREAR    ","     RECUPERAR     "}; //OPCIONES
+	const char *opciones[]={"CREAR         ","RECUPERAR     "}; //OPCIONES
 	int n=2; //NUMERO OPCIONES
 	int selec=1;
 	int tecla;
@@ -383,8 +464,8 @@ int menubackip()
 			printf("%s ",*(opciones+i));
 		}
 		printf ("\n");
-		gotoxy(25,2+selec);SetColor(240,4);printf("    %s",*(opciones+selec-1));
-		SetColor(7,0);
+		gotoxy(25,2+selec);SetColor(240,240);printf("    %s",*(opciones+selec-1));
+		SetColor(2,7);
 		do{
 			tecla=getch();
 		}while(tecla!=72 && tecla!=80 && tecla!=13);
@@ -410,12 +491,11 @@ int menubackip()
 
 	return selec;
 }
-
 int menumot()
 {
-    system("color 03");
+    system("color 72");
 	int cont=1;
-	const char *opciones[]={"    MENU TECLADO    ","     MENU MOUSE     "}; //OPCIONES
+	const char *opciones[]={"    MENU TECLADO    ","    MENU MOUSE      "}; //OPCIONES
 	int n=2; //NUMERO OPCIONES
 	int selec=1;
 	int tecla;
@@ -458,8 +538,8 @@ int menumot()
 			printf("%s ",*(opciones+i));
 		}
 		printf ("\n");
-		gotoxy(25,2+selec);SetColor(240,4);printf("    %s",*(opciones+selec-1));
-		SetColor(7,0);
+		gotoxy(25,2+selec);SetColor(240,240);printf("    %s",*(opciones+selec-1));
+		SetColor(2,7);
 		do{
 			tecla=getch();
 		}while(tecla!=72 && tecla!=80 && tecla!=13);
@@ -485,12 +565,91 @@ int menumot()
 
 	return selec;
 }
-
-int menuSiNo()
+int menuSiNomouse()
 {
-    system("color 03");
+    long x,y;
+    system("color 72");
 	int cont=1;
-	const char *opciones[]={"    SI     ","     NO     "}; //OPCIONES
+	const char *opciones[]={"    SI     ","           ","    NO     ","           "}; //OPCIONES
+	int n=4; //NUMERO OPCIONES
+	int selec=1;
+	int tecla;
+	bool repite=true;
+
+	for (int i=1;i<=67;i++)
+        {
+			gotoxy(i,8);
+			printf ("-");
+			gotoxy(i,0);
+			printf ("-");
+		}
+		for (int i=0;i<=7;i++)
+		{
+			gotoxy(1,i);
+			printf ("|");
+			gotoxy(67,i);
+			printf ("|");
+		}
+		//imprime titulo
+		gotoxy(25,0); printf("SELECCIONE LA OPCION\n\n");
+	do{
+		//system("cls");
+		gotoxy(25,2); printf("    ");
+		gotoxy(25,3); printf("    ");
+		gotoxy(25,4); printf("    ");
+		gotoxy(25,5); printf("    ");
+		gotoxy(25,6); printf("    ");
+		gotoxy(25,7); printf("    ");
+		gotoxy(25,8); printf("    ");
+		//imprime flecha de seleccion
+		//gotoxy(5,5+selec); SetColor(3, 7);printf("==>");
+		//imprime opciones
+		for(int i=0;i<n;i++){
+			gotoxy(30,2+i);
+			printf("                                         ");
+		}
+		for(int i=0;i<n;i++){
+			gotoxy(29,3+i);
+			printf("%s ",*(opciones+i));
+		}
+		printf ("\n");
+		gotoxy(25,2+selec);SetColor(240,240);printf("    %s",*(opciones+selec-1));
+		SetColor(2,7);
+		while(!GetAsyncKeyState(MOUSEEVENTF_MOVE&&MOUSEEVENTF_WHEEL))
+		{
+
+            POINT mouse;
+            HDC _hdc = GetDC(NULL);
+            if(_hdc)
+            {
+
+                GetCursorPos(&mouse);
+                x=mouse.x;
+                y=mouse.y;
+                //printf("La posicion del mouse es %d ; %d \n", mouse.x,mouse.y);
+                //Sleep(3000);
+            }
+            fflush(stdin);
+            //tecla=getch();
+
+		}
+		//primera opcion
+        if((y>=60 && y<=83) && (x>=150 && x<=286))
+        {
+            return 1;
+        }
+        //segunda opcion
+        else if ((y>=8 && y<=100) && (x>=150 && x<=286))
+        {
+            return 2;
+        }
+	}while(repite==true);
+}
+int menuSiNoteclas()
+{
+    system("color 72");
+	int cont=1;
+	const char *opciones[]={"    SI     ","    NO     "}; //OPCIONES
 	int n=2; //NUMERO OPCIONES
 	int selec=1;
 	int tecla;
@@ -533,8 +692,8 @@ int menuSiNo()
 			printf("%s ",*(opciones+i));
 		}
 		printf ("\n");
-		gotoxy(25,2+selec);SetColor(240,4);printf("    %s",*(opciones+selec-1));
-		SetColor(7,0);
+		gotoxy(25,2+selec);SetColor(240,240);printf("    %s",*(opciones+selec-1));
+		SetColor(2,7);
 		do{
 			tecla=getch();
 		}while(tecla!=72 && tecla!=80 && tecla!=13);
@@ -562,22 +721,22 @@ int menuSiNo()
 
 int menuPrincipal()
 {
-        system("color 03");
+    system("color 72");
 	int cont=1;
     long x=0,y=0;
-	const char *opciones[]={"INGRESO DE DATOS   ","TRADUCIR DATO      ","IMPRIMIR COLAS     ","BACKUP              ","SALIR             "};  //OPCIONES
-	int n=5; //NUMERO OPCIONES
+	const char *opciones[]={"INGRESO DE DATOS   ","                   ","TRADUCIR DATO       ","                   ","IMPRIMIR COLAS     ","                   ","BACKUP             ","                   ","SALIR              ","                   "};  //OPCIONES
+	int n=10; //NUMERO OPCIONES
 	int selec=1;
 	int tecla;
 	bool repite=true;
 
 	for (int i=1;i<=67;i++){
-			gotoxy(i,10);
+			gotoxy(i,15);
 			printf ("-");
 			gotoxy(i,0);
 			printf ("-");
 		}
-		for (int i=0;i<=10;i++)
+		for (int i=0;i<=15;i++)
 		{
 			gotoxy(1,i);
 			printf ("|");
@@ -595,6 +754,14 @@ int menuPrincipal()
 		gotoxy(25,6); printf("    ");
 		gotoxy(25,7); printf("    ");
 		gotoxy(25,8); printf("    ");
+        gotoxy(25,9); printf("    ");
+		gotoxy(25,10); printf("    ");
+        gotoxy(25,11); printf("    ");
+		gotoxy(25,12); printf("    ");
+		gotoxy(25,13); printf("    ");
+		gotoxy(25,14); printf("    ");
+		gotoxy(25,15); printf("    ");
+		gotoxy(25,16); printf("    ");
 		//imprime flecha de seleccion
 		//gotoxy(5,5+selec); SetColor(3, 7);printf("==>");
 		//imprime opciones
@@ -602,13 +769,16 @@ int menuPrincipal()
 			gotoxy(30,2+i);
 			printf("                                         ");
 		}
-		for(int i=0;i<n;i++){
+		for(int i=0;i<n;i++)
+        {
 			gotoxy(29,3+i);
 			printf("%s ",*(opciones+i));
 		}
+        gotoxy(300, 0);
+        printf("    AYUDA");
 		printf ("\n");
-		gotoxy(25,2+selec);SetColor(240,7);printf("    %s",*(opciones+selec-1));
-		SetColor(7,0);
+		gotoxy(25,2+selec);SetColor(240,240);printf("    %s",*(opciones+selec-1));
+		SetColor(2,7);
 		while(!GetAsyncKeyState(MOUSEEVENTF_MOVE&&MOUSEEVENTF_WHEEL))
 		{
 
@@ -627,47 +797,38 @@ int menuPrincipal()
             //tecla=getch();
 
 		}
-        if((y>=60 && y<=70) && (x>=150 && x<=286))
+		//primera opcion
+        if((y>=60 && y<=80) && (x>=150 && x<=286))
         {
             return 1;
         }
-        else if ((y>=70 && y<=80) && (x>=150 && x<=286))
+        //segunda opcion
+        else if ((y>=80 && y<=100) && (x>=150 && x<=286))
         {
             return 2;
         }
-        else if ((y>=80 && y<=90) && (x>=150 && x<=286))
+        else if ((y>=103 && y<=123) && (x>=150 && x<=286))
         {
             return 3;
         }
-        else if ((y>=90 && y<=100) && (x>=150 && x<=286))
+        else if ((y>=123 && y<=143) && (x>=150 && x<=286))
         {
             return 4;
         }
-        else if ((y>=100 && y<=110) && (x>=150 && x<=286))
+        else if ((y>=143 && y<=163) && (x>=150 && x<=286))
         {
             return 5;
         }
-        else if ((y>=110 && y<=120) && (x>=150 && x<=286))
+        else if ((y>=163 && y<=190) && (x>=150 && x<=286))
         {
-            return 5;
+            return 6;
         }
-		switch(tecla){
-			case 72:
-				selec--;
-				if(selec<1){
-					selec=n;
-				}
-				break;
-			case 80:
-				selec++;
-				if(selec>n){
-					selec=1;
-				}
-				break;
-			case 13:
-				repite=false;
-				break;
-		}
+        else if ((y>=173 && y<=181) && (x>=346 && x<=407))
+        {
+            printf("AQUI VA EL DR EXPLAIN");
+            system("pause");
+            //aqui debe ir el dr explain !!!!!
+        }
 	}while(repite==true);
 
 	return selec;
@@ -721,7 +882,7 @@ int main()
     HANDLE MiAgente;
     DWORD IdMerlin;
     MiAgente=CreateThread(NULL,0,merlin,NULL,0,&IdMerlin);
-    system("color 03");
+    system("color 72");
     ListaSimple listita;
     char palabra[70] ;
 	int datoEntero = -1;
@@ -744,21 +905,20 @@ int main()
 	system ("cls");
 	fflush(stdin);
 	opc1=menumot();
-
 	do{
-            if(opc1==1)
-    {
-        system("cls");
-        opc=menuPrincipal2();
-         system("cls");
+        if(opc1==1)
+        {
+            system("cls");
+            opc=menuPrincipal2();
+             system("cls");
 
-    }
-    else
-    {
-        system("cls");
-        opc=menuPrincipal();
-        system("cls");
-    }
+        }
+        else
+        {
+            system("cls");
+            opc=menuPrincipal();
+            system("cls");
+        }
         fflush(stdin);
 
 			switch(opc)
@@ -779,21 +939,55 @@ int main()
                         system("cls");
                         gotoxy(15,1);
                         printf("La palabra ya existe en la Cola DESEA TRADUCIRLA");
-                        sino=menuSiNo();
-                        if(sino==1)
+                        if(opc1==1)
                         {
-                            FILE *ar=NULL;
-                            ar=fopen("datosEsp.txt","w");
-                            fprintf(ar, palabra);
-                            fclose(ar);
-                            system("java -jar traducestesi.jar");
+                            sino=menuSiNoteclas();
+                            if(sino==1)
+                            {
+                                system("cls");
+                                FILE *ar=NULL;
+                                ar=fopen("datosEsp.txt","w");
+                                fprintf(ar, palabra);
+                                fclose(ar);
+                                system("java -jar traducestesi.jar");
+                                leerfichero(palabraIng);
+                                gotoxy(0,16);
+                                printf("\nReproduciendo sonido.....\n");
+                                system("java -jar C:\\Users\\usuario\\Desktop\\ProyectoTraductorV1\\audio\\dist\\audio.jar");
+                                system("pause");
+                            }
+                            else if(sino==2)
+                            {
+                                system("cls");
+                                printf("Vuelva Pronto !!\n");
+                                system("pause");
+                            }
                         }
-                        else if(sino==2)
+                        else if(opc1!=1)
                         {
-                            system("cls");
-                            printf("Vuelva Pronto !!\n");
-                            system("pause");
+                            sino=menuSiNomouse();
+                            if(sino==1)
+                            {
+                                system("cls");
+                                FILE *ar=NULL;
+                                ar=fopen("datosEsp.txt","w");
+                                fprintf(ar, palabra);
+                                fclose(ar);
+                                system("java -jar traducestesi.jar");
+                                leerfichero(palabraIng);
+                                gotoxy(0,16);
+                                printf("\nReproduciendo sonido.....\n");
+                                system("java -jar C:\\Users\\usuario\\Desktop\\ProyectoTraductorV1\\audio\\dist\\audio.jar");
+                                system("pause");
+                            }
+                            else if(sino==2)
+                            {
+                                system("cls");
+                                printf("Vuelva Pronto !!\n");
+                                system("pause");
+                            }
                         }
+
                     }
                     else
                     {
@@ -822,7 +1016,7 @@ int main()
                         gotoxy(0,15);
                         printf("\nLa palabra traducida es: ");
                         system("java -jar traducestesi.jar");
-                        leerfichero( palabraIng);
+                        leerfichero(palabraIng);
                         gotoxy(0,16);
                         printf("\nReproduciendo sonido.....\n");
                         system("java -jar C:\\Users\\usuario\\Desktop\\ProyectoTraductorV1\\audio\\dist\\audio.jar");
@@ -854,22 +1048,48 @@ int main()
 			case 4:
 			    {
 			        system("cls");
-			        resp=menubackip();
-
-			        if (resp==1)
+			        if(opc1==1)
                     {
-                        system ("cls");
-                        listita.backup(horarios);
-                        validarBackup++;
-                    }
-                    else{
+                        resp=menubackupteclas();
+
+                        if (resp==1)
+                        {
                             system ("cls");
+                            listita.backup(horarios);
+                            validarBackup++;
+                        }
+                        else{
+                                system ("cls");
 
 
-                                opcionesRecuperar(recuperarArc);
-                                listita.recuperar(recuperarArc);
+                                    opcionesRecuperar(recuperarArc);
+                                    listita.recuperar(recuperarArc);
 
+                        }
                     }
+                    else if(opc1!=1)
+                    {
+                        resp=menubackupmouse();
+
+                        if (resp==1)
+                        {
+                            system ("cls");
+                            listita.backup(horarios);
+                            validarBackup++;
+                        }
+                        else{                        leerfichero( palabraIng);
+                        gotoxy(0,16);
+                        printf("\nReproduciendo sonido.....\n");
+                        system("java -jar C:\\Users\\usuario\\Desktop\\ProyectoTraductorV1\\audio\\dist\\audio.jar");
+                                system ("cls");
+
+
+                                    opcionesRecuperar(recuperarArc);
+                                    listita.recuperar(recuperarArc);
+
+                        }
+                    }
+
 
                     break;
 			    }
