@@ -1,0 +1,73 @@
+# depslib dependency file v1.0
+1518477294 source:c:\users\kevin111\desktop\todoarboles\ejercicios\ejercicio1-4\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"nodo.h"
+	<windows.h>
+	<string.h>
+	<dos.h>
+	<math.h>
+	<iostream>
+
+1518475952 c:\users\kevin111\desktop\todoarboles\ejercicios\ejercicio1-4\nodo.h
+	<string.h>
+	<iostream>
+
+1518478078 source:c:\users\kevin111\desktop\todoarboles\ejercicios\ejercicio1-4\main.cpp
+	<iostream>
+	"nodo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	<string.h>
+	<dos.h>
+
+1518473538 source:f:\ejercicio1-4\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"nodo.h"
+	<windows.h>
+	<string.h>
+	<dos.h>
+	<math.h>
+	<iostream>
+
+1518469864 f:\ejercicio1-4\nodo.h
+	<string.h>
+	<iostream>
+
+1518472426 source:f:\ejercicio1-4\main.cpp
+	<iostream>
+	"nodo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	<string.h>
+	<dos.h>
+
+1518477294 source:g:\ejercicio1-4\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"nodo.h"
+	<windows.h>
+	<string.h>
+	<dos.h>
+	<math.h>
+	<iostream>
+
+1518475952 g:\ejercicio1-4\nodo.h
+	<string.h>
+	<iostream>
+
+1518477800 source:g:\ejercicio1-4\main.cpp
+	<iostream>
+	"nodo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	<string.h>
+	<dos.h>
+
