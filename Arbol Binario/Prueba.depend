@@ -1,0 +1,57 @@
+# depslib dependency file v1.0
+1517375652 source:c:\users\toshiba\desktop\kevin\prueba\main.cpp
+	<iostream>
+	"binarytree.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	<iostream>
+	<string.h>
+	<fstream>
+	<pthread.h>
+	<dos.h>
+	<graphics.h>
+
+1517374351 source:c:\users\toshiba\desktop\kevin\prueba\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"binarytree.h"
+	<windows.h>
+	<string.h>
+	<graphics.h>
+	<dos.h>
+	<math.h>
+
+1517373866 c:\users\toshiba\desktop\kevin\prueba\binarytree.h
+	<string.h>
+	<iostream>
+
+1517420215 source:c:\users\jhony\desktop\prueba\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"binarytree.h"
+	<windows.h>
+	<string.h>
+	<graphics.h>
+	<dos.h>
+	<math.h>
+
+1517420215 c:\users\jhony\desktop\prueba\binarytree.h
+	<string.h>
+	<iostream>
+
+1517420737 source:c:\users\jhony\desktop\prueba\main.cpp
+	<iostream>
+	"binarytree.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	<iostream>
+	<string.h>
+	<fstream>
+	<pthread.h>
+	<dos.h>
+	<graphics.h>
+
