@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1518579944 source:c:\users\kevin111\desktop\todoarboles\ejercicios\ejercicio 8-12\funciones.cpp
+	<stdlib.h>
+	<stdio.h>
+	"nodo.h"
+	<windows.h>
+	<string.h>
+	<dos.h>
+	<math.h>
+	<iostream>
+	<conio.h>
+
+1518579337 c:\users\kevin111\desktop\todoarboles\ejercicios\ejercicio 8-12\nodo.h
+	<string.h>
+	<iostream>
+	<string>
+
+1518579281 source:c:\users\kevin111\desktop\todoarboles\ejercicios\ejercicio 8-12\main.cpp
+	<iostream>
+	"nodo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	<string.h>
+	<dos.h>
+
